@@ -3,28 +3,42 @@
 import openpyxl
 import datetime
 
-
 def main():
 
-    list_of_days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
-    list_of_names = []
+    list_of_occupants =['Marvinus', 'Harry', 'Mwai', 'dan']
+    current_names = []
+    new_list = []
 
     wb = openpyxl.load_workbook('/run/media/marvin/DriveEtCetera/HouseChores.xlsx')
     ws = wb.active
-    make_list_of_names(list_of_names,ws,wb)
-    print(list_of_names)
-    # dictionary for current green
-    dictionary_of_vegies = dict(zip(list_of_days,list_of_names))
-    new_dictionary_of_vegies(dictionary_of_vegies)
+    current_list_for_greens(current_names,ws,wb)
+    print("This is this week from monday: ",current_names)
+    next_week_list(current_names,new_list,list_of_occupants)
+    print(new_list)
+    # writing_names_to_table(ws,new_list)
     wb.close()
     return
 
-def make_list_of_names(list_of_names,ws,wb):
+def current_list_for_greens(current_names,ws,wb):
     for rowNumber in range(4,ws.max_row+1):#skip first four rows
         names = ws.cell(row=rowNumber,column=5).value
-        list_of_names.append(names)
-    return list_of_names
+        current_names.append(names)
+    return current_names
 
-def new_dictionary_of_vegies(dictionary_of_vegies):
-    return
+def next_week_list(current_names,new_list,list_of_occupants):
+    '''Use this week's list and the member list to make new list
+       list_of_occupants =['Marvinus', 'Harry', 'Mwai', 'dan']
+    '''
+
+    new_list += current_names[-4:]
+    new_list.append(current_names[-4])
+    return new_list
+
+def writing_names_to_table(ws,new_list):
+    'Replace column for those buying greens with new_list'
+    ItemNumber = 0
+    for rowNumber in range(4,ws.max_row+1):#skip first four rows
+        ws.cell(row=rowNumber,column=5).value = new_list[ItemNumber] #lynne ndero
+        ItemNumber +=1
+
 main()
