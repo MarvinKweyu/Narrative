@@ -3,6 +3,7 @@
 A series of scripts to automate.
 
 #HouseChores
+
 Works on automating room tasks with the script running once a week
 Columns of edit are: Mopping,Dishes and Buying vegetables.
 Buying greens runs on a continuous repetitive loop week to week.
@@ -13,6 +14,7 @@ Add mail
 *Add text message functionality
 
 #Narrative
+
 This works by:
    accepting user input on relevant details
    taking a pdf from the current working directory ,
