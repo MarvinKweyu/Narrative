@@ -7,6 +7,7 @@
 import openpyxl
 import random
 import os
+import datetime
 
 class HouseChores(object):
     """docstring for HouseChores"""
@@ -36,7 +37,7 @@ class HouseChores(object):
         self.old_greens = []
         self.old_water = []
 
-        for rowNumber in range(4,self.ws.max_row+1):#skip first four rows
+        for rowNumber in range(5,self.ws.max_row+1):#skip first four rows
             self.mopper_name = self.ws.cell(row=rowNumber,column=4).value #mopping
             self.old_mopping.append(self.mopper_name)
             self.greens_name = self.ws.cell(row=rowNumber,column=5).value #greens
@@ -104,11 +105,16 @@ class HouseChores(object):
         print("Writing to file...")
         #for new_mopping
         self.item_number = 0
-        # print("\nThose mopping are:\n ",self.new_mopping)
-        # print("\nThose buying greens are: \n",self.new_greens)
-        # print("\nThose fetching water are: \n",self.new_water)
 
-        for rowNumber in range(4,self.ws.max_row+1):#skip first four rows
+        #add duration of timetable
+        self.today = datetime.date.today()
+        self.duration = datetime.timedelta(days=7)
+        self.end_date = self.today+self.duration
+        self.today = self.today.strftime("%d-%b-%Y")
+        self.end_date = self.end_date.strftime("%d-%b-%Y")
+        self.ws.cell(row = 2,column=1).value = 'Dated ' + str(self.today) +" to "+str(self.end_date)
+
+        for rowNumber in range(5,self.ws.max_row+1):#skip first five rows
             self.ws.cell(row=rowNumber,column=4).value = self.new_mopping[self.item_number] # column 4 mopping
             self.ws.cell(row=rowNumber,column=5).value = self.new_greens[self.item_number] #greens
             self.ws.cell(row=rowNumber,column=8).value = self.new_water[self.item_number] #lynne ndero water
