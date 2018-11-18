@@ -37,7 +37,7 @@ class HouseChores(object):
         self.old_greens = []
         self.old_water = []
 
-        for rowNumber in range(5,self.ws.max_row+1):#skip first four rows
+        for rowNumber in range(5,self.ws.max_row+1):#skip first five rows
             self.mopper_name = self.ws.cell(row=rowNumber,column=4).value #mopping
             self.old_mopping.append(self.mopper_name)
             self.greens_name = self.ws.cell(row=rowNumber,column=5).value #greens
@@ -98,7 +98,6 @@ class HouseChores(object):
 
 
     def write_to_file(self):
-        # Mercy adhiambo a
         "write the new timetable to a file"
 
         print("Finishing up..")
@@ -117,7 +116,7 @@ class HouseChores(object):
         for rowNumber in range(5,self.ws.max_row+1):#skip first five rows
             self.ws.cell(row=rowNumber,column=4).value = self.new_mopping[self.item_number] # column 4 mopping
             self.ws.cell(row=rowNumber,column=5).value = self.new_greens[self.item_number] #greens
-            self.ws.cell(row=rowNumber,column=8).value = self.new_water[self.item_number] #lynne ndero water
+            self.ws.cell(row=rowNumber,column=8).value = self.new_water[self.item_number] # water
             self.item_number +=1
 
         # HouseChores.week+=1
