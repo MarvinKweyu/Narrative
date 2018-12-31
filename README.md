@@ -34,6 +34,5 @@ This works by:
 
 ### ToDo List
 
-- Add more categories of narratives to the directory with a menu to choose from.
 - Add mail functionality to allow participants if any to get mail of the resultant file.
 - Use a database to store the pdf files
