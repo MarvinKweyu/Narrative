@@ -4,6 +4,8 @@
 #uses method for writing,get file content old lists,
 #make new_names ,write content to file
 
+#idea ---work with sheets for each month before new xlsx
+
 import openpyxl
 import random
 import os
@@ -12,14 +14,9 @@ import datetime
 class HouseChores(object):
     """docstring for HouseChores"""
 
-    # week = 1
-
-    def __init__(self,file,occupants):
+    def __init__(self,file):
         '''initialize the class '''
-
         self.file = file
-        self.occupants = occupants
-        self.read_file()
 
     def read_file(self):
         "Read the Excel spreadsheet"
@@ -29,7 +26,7 @@ class HouseChores(object):
         self.get_file_content()
 
     def get_file_content(self):
-        '''Gets the current lists of respective chores from file and store them
+        '''Gets the current lists of respective chores from old timetable and store them
         in variables
         '''
 
@@ -45,12 +42,14 @@ class HouseChores(object):
             self.fetcher_name = self.ws.cell(row=rowNumber,column=8).value #water
             self.old_water.append(self.fetcher_name)
 
+        def room_template():
+            ''' '''
+
         self.__make_new_names()
 
     def __make_new_names(self):
         "Uses present timetable to make list of next weeks list"
         # private because it has buying greens logic working with
-
 
         self.new_mopping = []
         self.new_greens = []
@@ -77,13 +76,11 @@ class HouseChores(object):
 
         print("Removing duplicates in water list...")
         self.remove_triple_names()
-        self.write_to_file()
 
     def remove_triple_names(self):
         '''Remove names appearing more than twice in the list replacing with
         those occuring least'''
 
-        #implement polymorphism here
         for name in self.new_water:
             if self.new_water.count(name) > 2:
                 self.new_water[self.new_water.index(name)] = random.choice(self.occupants)
@@ -102,8 +99,9 @@ class HouseChores(object):
 
         print("Finishing up..")
         print("Writing to file...")
-        #for new_mopping
-        self.item_number = 0
+        #write to new sheet ..four sheets per month
+        self.week_num = 'week1'
+        #self.week_sheet = self.wb[self.wb.create_sheet(index=1,title=self.week_num)]
 
         #add duration of timetable
         self.today = datetime.date.today()
@@ -111,29 +109,24 @@ class HouseChores(object):
         self.end_date = self.today+self.duration
         self.today = self.today.strftime("%d-%b-%Y")
         self.end_date = self.end_date.strftime("%d-%b-%Y")
-        self.ws.cell(row = 2,column=1).value = 'Dated ' + str(self.today) +" to "+str(self.end_date)
+        self.ws.cell(row=2,column=1).value = 'Dated '+str(self.today)+" to "+str(self.end_date)
 
+        self.item_number = 0
         for rowNumber in range(5,self.ws.max_row+1):#skip first five rows
             self.ws.cell(row=rowNumber,column=4).value = self.new_mopping[self.item_number] # column 4 mopping
             self.ws.cell(row=rowNumber,column=5).value = self.new_greens[self.item_number] #greens
             self.ws.cell(row=rowNumber,column=8).value = self.new_water[self.item_number] # water
             self.item_number +=1
 
-        # HouseChores.week+=1
-
         # print(str(HouseChores.week)+self.file)
 
-        self.wb.save('2'+self.file)
+        self.wb.save('November'+self.file)
         print("File has been saved...")
         self.wb.close()
 
-# main
-def main():
+    def first_timetable(self,new_members):
+        '''make a new randomized timetable for the first time run'''
 
-    # file = input("Enter the path of the file: ")
-    file = "HouseChores.xlsx"
-    occupants =['Marvinus', 'Harry', 'Mwai', 'dan']
-    timetable = HouseChores(file,occupants)
-
-    return
-main()
+        self.occupants  =  list(new_members.keys())
+        return print(self.occupants)
+    # def create_template(self):
