@@ -31,9 +31,9 @@ class HouseChores(object):
             self.old_greens.append(self.greens_name)
             self.fetcher_name = self.ws.cell(row=rowNumber,column=8).value #water
             self.old_water.append(self.fetcher_name)
-        self.make_new_names()
+        self.__make_new_names()
 
-    def make_new_names(self):
+    def __make_new_names(self):
         '''Uses present timetable to make list of next weeks list.
            Using private method'''
 
@@ -57,9 +57,6 @@ class HouseChores(object):
     def write_to_file(self,new_table = 'Updated_timetable.xlsx'):
         "write the new timetable to a file"
 
-        print("Finishing up..")
-        print("Writing to file...")
-
         #add duration of timetable
         self.today = datetime.date.today()
         self.duration = datetime.timedelta(days=7)
@@ -75,6 +72,5 @@ class HouseChores(object):
             self.ws.cell(row=rowNumber,column=8).value = self.new_water[self.item_number] # water
             self.item_number +=1
 
-        self.wb.save(self.new_table)
-        print("File has been saved...")
+        self.wb.save(new_table)
         self.wb.close()
