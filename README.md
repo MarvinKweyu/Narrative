@@ -1,15 +1,8 @@
 ## Narrative
+Users want to be part of a narrative.
 
-This works by:
-
-  Accepting user input on relevant details
-
-  Taking a pdf from the current working directory ,
-
-  Converting the pdf to a text file and editing the text file with the users details
-
-  Making the converted text file a pdf and displaying it to the user
-
+The script accepts user information and genre of choice through a GUI
+This information is then edited into the programs existing files with an option to save the resultant story in the users directory.
 
 ### ToDo List
 
