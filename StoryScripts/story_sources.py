@@ -1,11 +1,14 @@
 #!/bin/python3
+
 """
-takes user input,changes content in an existing file
+Takes user input,changes content in an existing file
 to match input and makes a new file of it saving it as a pdf and displaying it with
-an option to send to the other game participants
+an option to send to the other game participants.
 """
 import os
 import fileinput
+from typing import Union, Dict, Any
+
 import PyPDF2
 from reportlab.pdfgen import canvas
 
@@ -13,27 +16,38 @@ from reportlab.pdfgen import canvas
 class NewStory(object):
     """Backend for story mania GUI."""
 
-    def __init__(self,genre,main_character):
+    def __init__(self):
         """Initialize the genre and one character for now."""
-        self.genre = genre
-        self.main_character = main_character
-        self.get_information()
+        # self.genre = genre
+        # self.main_character = main_character
+        # self.get_information()
 
-    def get_information(self):
-        """Open the pdf file ,edit and write edited work to a new file
+    def get_information(self,genre,main_character):
+        """Open the pdf file ,edit and write edited work to a new txt file
         Has two text files; intermediate_txt(has words extracted) and
-        final_text(has words changed)"""
+        final_text(has words changed)
+        :rtype: file called final_text"""
 
-        replacement_words = {'Alaina': self.main_character} # local variable
+        replacement_words: Dict[str, Any] = {'Alaina': main_character}  # local
+        # genres paths
+        adventure = os.path.join('..', 'Genre', 'Adventure', 'adventure.pdf')
+        romance = '../Genre/Adventure/romance.pdf'
+        thriller = '../Genre/Thriller/thriller.pdf'
+        # get path of genre
+        if genre == 'adventure':
+            play_file = adventure
+        elif genre == 'romance':
+            play_file = romance
+        else:
+            play_file = thriller
 
-        self.file = PyPDF2.PdfFileReader(open(self.play_file, 'rb'))
+        self.file = PyPDF2.PdfFileReader(open(play_file, 'rb'))
         self.pdf_writer = PyPDF2.PdfFileWriter()  # create blank pdf
 
-        print("Creating intermediate text...")
-        self.intermediate_txt = open(
-            '../Programfiles/Intermediates/intermediate.txt', 'a')
+        # Creating intermediate text
+        self.intermediate_txt = open((os.path.join('..', 'Programfiles', 'Intermediates', 'intermediate.txt')), 'a')
 
-        print("Extracting text...")
+        # Extracting text from after cover page to the last
         for current_page in range(1, self.file.numPages):
             self.page_obj = self.file.getPage(current_page)
             self.content = self.page_obj.extractText()  # file name
@@ -44,22 +58,23 @@ class NewStory(object):
         # self.pdf_writer.addPage(self.page_obj)
 
         # open text file to write into and append content
-        print("Creating new file...")
-        self.new_output_file = open(
-            '../Programfiles/Finaltexts/final_text.txt', 'w')
+        self.new_output_file = open('../Programfiles/Finaltexts/final_text.txt', 'w')
         # takes file name as self.content
-        print("Adding new content...")
+        # print("Adding new content...")
         for line in fileinput.input('../Programfiles/Intermediates/intermediate.txt', inplace=False):
             line = line.rstrip()
             if not line:
                 continue
-            for key in replacement_words.keys():
+            for key in replacement_words:
                 if key in line:
                     line = line.replace(key, replacement_words[key])
             self.new_output_file.write(line + "\n")
         self.new_output_file.close()
-        print("Your file has been written successfully")
-        self.convert_to_pdf()
+        # print("Your file has been written successfully")
+        # self.convert_to_pdf()
+        self.new_output_file = open('../Programfiles/Finaltexts/final_text.txt', 'r')
+        return self.new_output_file
+
 
     def convert_to_pdf(self):
         """Take the final text and convert to pdf for saving."""
@@ -70,8 +85,7 @@ class NewStory(object):
         self.text_file.close()
         self.i = 750
         self.num_of_lines = 0
-        self.my_pdf = canvas.Canvas(
-            '../UserPdfFiles/OurGameStory.pdf')  # the pdf created
+        self.my_pdf = canvas.Canvas('../UserPdfFiles/OurGameStory.pdf')  # the pdf created
 
         while self.num_of_lines < len(self.lines):
             # I'm gonna write every 65 lines because I need it like that

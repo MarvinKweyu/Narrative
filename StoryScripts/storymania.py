@@ -1,7 +1,7 @@
 #!/bin/python3
 
 from tkinter import *
-
+from tkinter import filedialog
 from StoryScripts.story_sources import NewStory
 
 # global instance
@@ -27,7 +27,7 @@ class StoryMania(Frame):
         category = ["Adventure", "Romance", "Thriller"]
         column = 1
         for item in category:
-            Radiobutton(self, text=item, variable=self.genre, value=item, command=self.update_txt).grid(row=1, column=column, sticky=W)
+            Radiobutton(self, text=item, variable=self.genre, value=item).grid(row=1, column=column, sticky=W)
             column += 1
         # create label and text entries for character names
         Label(self, text="Character: ").grid(row=4, column=0, sticky=W)
@@ -41,10 +41,13 @@ class StoryMania(Frame):
         # self.narrative.pack()
         self.narrative.grid(row=7, column=0, columnspan=3, sticky=W)
         # create save button
-        name =
-    def update_txt(self):
+        self.savefile = Button(self, text="Save story", command=self.save_file)
+        self.savefile.grid(row=8, column=0)
+
+    def save_file(self):
         """Update narrative given genre."""
-        pass
+        self.name = filedialog.asksaveasfile()
+
 
     def reveal(self):
         """Display results of story after submission."""
