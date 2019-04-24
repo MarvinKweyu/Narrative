@@ -1,13 +1,16 @@
 #!/bin/python3
 
 from tkinter import *
+
 from StoryScripts.story_sources import NewStory
 
 # global instance
 user = NewStory()
 
+
 class StoryMania(Frame):
-    """Create a narrative"""
+    """Create a narrative."""
+
     def __init__(self, master):
         """Initialize frame."""
         super(StoryMania, self).__init__(master)
@@ -24,7 +27,7 @@ class StoryMania(Frame):
         category = ["Adventure", "Romance", "Thriller"]
         column = 1
         for item in category:
-            Radiobutton(self, text=item, variable=self.genre, value=item, command=self.update_txt).grid(row=1,column=column,sticky=W)
+            Radiobutton(self, text=item, variable=self.genre, value=item, command=self.update_txt).grid(row=1, column=column, sticky=W)
             column += 1
         # create label and text entries for character names
         Label(self, text="Character: ").grid(row=4, column=0, sticky=W)
@@ -35,8 +38,10 @@ class StoryMania(Frame):
         self.submit.grid(row=6,column=0)
         # text widget to display story
         self.narrative = Text(self, width=50, height=25, wrap=WORD)
+        # self.narrative.pack()
         self.narrative.grid(row=7, column=0, columnspan=3, sticky=W)
-
+        # create save button
+        name =
     def update_txt(self):
         """Update narrative given genre."""
         pass
@@ -45,13 +50,18 @@ class StoryMania(Frame):
         """Display results of story after submission."""
         story = self.genre.get()
         character = self.character.get()
+        # output_file = user.get_information(story, character)
+        output_file = '../Programfiles/Intermediates/intermediate.txt'
         self.narrative.delete(0.0, END)
-        self.narrative.insert(0.0, story)
-        pass
+        # with open(output_file,'r') as reader:
+        #    display = reader.read()
+        # text.insert('end', open(filename, 'r').read())
+        self.narrative.insert(END,open(output_file,'r').read())
+
 
 
 def main():
-    """interact with class"""
+    """Interact with class."""
     root = Tk()
     root.title("StoryMania")
     # root.geometry("300x300")
