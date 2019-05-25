@@ -31,13 +31,13 @@ class NewStory(object):
         replacement_words: Dict[str, Any] = {'Alaina': main_character}  # local
         # genres paths
         adventure = os.path.join('..', 'Genre', 'Adventure', 'adventure.pdf')
-        romance = '../Genre/Adventure/romance.pdf'
+        epic = '../Genre/epic/epic.pdf'
         thriller = '../Genre/Thriller/thriller.pdf'
         # get path of genre
         if genre == 'adventure':
             play_file = adventure
-        elif genre == 'romance':
-            play_file = romance
+        elif genre == 'epic':
+            play_file = epic
         else:
             play_file = thriller
 
