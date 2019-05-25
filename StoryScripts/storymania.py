@@ -24,7 +24,7 @@ class StoryMania(Frame):
         self.genre = StringVar()
         self.genre.set(None)
         # create radio button for category
-        category = ["Adventure", "Romance", "Thriller"]
+        category = ["Adventure", "Epic", "Thriller"]
         column = 1
         for item in category:
             Radiobutton(self, text=item, variable=self.genre, value=item).grid(row=1, column=column, sticky=W)
