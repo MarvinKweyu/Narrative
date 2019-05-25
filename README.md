@@ -8,3 +8,7 @@ This information is then edited into the programs existing files with an option 
 
 - Add mail functionality to allow participants if any to get mail of the resultant file.
 - Use a database to store the pdf files
+
+##### Sample screen
+[Screenshot]('images/Screenshot.png')
+
