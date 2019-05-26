@@ -4,12 +4,7 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="795264ab-a7c3-4fdc-acc8-e63f8e33e323" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Genre/Romance/romance.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Genre/epic/epic.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StoryScripts/story_sources.py" beforeDir="false" afterPath="$PROJECT_DIR$/StoryScripts/story_sources.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StoryScripts/story_telling2.py" beforeDir="false" />
-    </list>
+    <list default="true" id="795264ab-a7c3-4fdc-acc8-e63f8e33e323" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +33,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/StoryScripts/story_sources.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+            <state relative-caret-position="69">
+              <caret line="46" column="36" selection-start-line="46" selection-start-column="36" selection-end-line="46" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -48,7 +43,7 @@
         <entry file="file://$PROJECT_DIR$/StoryScripts/storymania.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="525">
-              <caret line="25" column="30" lean-forward="true" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
+              <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
               <folding>
                 <element signature="e#16#37#0" expanded="true" />
               </folding>
@@ -60,7 +55,7 @@
         <entry file="file://$PROJECT_DIR$/StoryScripts/story_view.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="111">
-              <caret line="28" column="15" lean-forward="true" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="15" />
+              <caret line="28" column="15" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -274,7 +269,7 @@
       <workItem from="1557174349331" duration="135000" />
       <workItem from="1557387936952" duration="77000" />
       <workItem from="1557506069148" duration="707000" />
-      <workItem from="1558817945055" duration="840000" />
+      <workItem from="1558817945055" duration="1578000" />
     </task>
     <task id="LOCAL-00001" summary="Added GUI and removed unnecessary files and libraries.Code is incomplete and still buggy">
       <created>1555841604749</created>
@@ -294,7 +289,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50967000" />
+    <option name="totallyTimeSpent" value="51705000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -308,7 +303,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="742" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.479062" visible="true" weight="0.22954546" />
       <window_info id="Structure" order="1" sideWeight="0.52093804" side_tool="true" weight="0.22954546" />
@@ -448,7 +442,7 @@
     <entry file="file://$PROJECT_DIR$/StoryScripts/storymania.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
-          <caret line="25" column="30" lean-forward="true" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
+          <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
           <folding>
             <element signature="e#16#37#0" expanded="true" />
           </folding>
@@ -468,14 +462,14 @@
     <entry file="file://$PROJECT_DIR$/StoryScripts/story_view.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="111">
-          <caret line="28" column="15" lean-forward="true" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="15" />
+          <caret line="28" column="15" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/StoryScripts/story_sources.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+        <state relative-caret-position="69">
+          <caret line="46" column="36" selection-start-line="46" selection-start-column="36" selection-end-line="46" selection-end-column="36" />
         </state>
       </provider>
     </entry>
